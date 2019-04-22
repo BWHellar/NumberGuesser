@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
   public class NumberWizard
   {
+    static int max = 1000;
+    static int min = 1;
+    static int guess = 500;
     public static void Main()
     {
-
-      int max = 1000;
-      int min = 1;
-      // int guess = 500;
-      // Start is called before the first frame update
 
       Console.WriteLine("Welcome to Wizard");
       Console.WriteLine("Pick a number");
@@ -21,31 +19,26 @@ using System.Collections.Generic;
       Loop();
   }
        public static void Loop(){
-         List<int> guessNumber = new List<int> {};
-         int guess = 500;
-
          string key = Console.ReadLine();
           if (key == "h" || key == "H")
           {
               Console.WriteLine("Higher!");
-              guessNumber.Add(guess);
-              Console.WriteLine(guessNumber[0]);
-              guessNumber[0] = (guessNumber[0])/2;
-              Console.WriteLine(guessNumber[0]);
+              min = guess;
+              guess = (max + min) / 2;
+              Console.WriteLine(guess);
 
-              // Loop();
           }
           else if (key == "l" || key == "L")
           {
               Console.WriteLine("Lower!");
-
-              guess = guess / 2;
+              max = guess;
+              guess = (max + min) / 2;
               Console.WriteLine(guess);
-              // Loop();
           }
           else if (key == "c" || key == "C")
           {
-              Console.WriteLine("I guess your number!");
+              Console.WriteLine("I guessed your number!");
           }
+          Loop();
         }
 }
